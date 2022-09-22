@@ -1,6 +1,6 @@
 import requests, json
 
-url = 'http://192.168.1.101:8110'
+url = 'http://localhost:8110'
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 def sendCmd(cmd, dur):

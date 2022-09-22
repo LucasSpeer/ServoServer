@@ -28,9 +28,9 @@ def setDuty(d):
 def handleCommand(cmd, sleep):
     #print('Handling command: %s' %cmd)
     if cmd == 'dn':
-        setDuty(17)
+        setDuty(9)
     elif cmd == 'up':
-        setDuty(2)
+        setDuty(5)
     time.sleep(sleep)
     setDuty(0)
         
