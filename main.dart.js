@@ -15516,7 +15516,7 @@ O4:function O4(a){this.a=a},
 O5:function O5(a){this.a=a},
 hp:function hp(a,b,c,d,e,f,g){var _=this
 _.z=a
-_.Q="192.168.0.101:8110"
+_.Q="motors.local:8110"
 _.as=100
 _.d2$=b
 _.dT$=c
@@ -47769,7 +47769,7 @@ A.O7.prototype={
 $0(){var s=A.adJ("motor_storage"),r=new A.hp(s,new A.bX(t.Ak),new A.bX(t.Fk),!1,!1,!1,$.bh()),q=s.b
 q===$&&A.i()
 q=J.aX(q.c,"urlKey")
-r.Q=q==null?"192.168.0.101:8110":q
+r.Q=q==null?"motors.local:8110":q
 s=J.aX(s.b.c,"durKey")
 r.as=s==null?100:s
 return r},

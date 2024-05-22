@@ -20,9 +20,9 @@ class MotorRequestHandler(CGIHTTPRequestHandler):
         d = self.rfile.read(length).decode('utf-8')
         print('d:')
         print(d)
-        post_data = urllib.parse.parse_qs(d)
+        #post_data = urllib.parse.parse_qs(d)
         #print(post_data)
-        handlePostData(post_data)
+        handlePostData(d)
         self.send_response(200, "ok")
         self.end_headers()
         
@@ -66,16 +66,22 @@ def testLoop():
     
 def handlePostData(post_data):
     global sHandler
-    print('pd:\n')
+    print('pd:')
+    #post_data = '\"' + post_data +'\"'
     print(post_data)
-    data = post_data["payload"]
-    print('d:')
-    print(data)
-    for x in data:
-        jx = json.loads(x)
-        for key in jx.keys():
-            if key == 'cmd':
-                handleCommand(jx[key], float(jx['dur']))
+    jx = json.loads(post_data)
+    for key in jx.keys():
+        if key == 'cmd':
+            handleCommand(jx[key], float(jx['dur']))
+
+    #data = post_data["payload"]
+    #print('d:')
+    #print(data)
+    #for x in post_data:
+    #    jx = json.loads(x)
+    #    for key in jx.keys():
+    #        if key == 'cmd':
+    #            handleCommand(jx[key], float(jx['dur']))
         
 
 def keyListen(stdscr):
@@ -108,6 +114,7 @@ def main():
     
     PRT = 8110
     serv = HTTPServer(('',PRT), MotorRequestHandler)
+    serv.allow_reuse_address = True
     print('Motor server started on port %s' %PRT)
     serv.serve_forever()
     
